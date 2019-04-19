@@ -3,7 +3,7 @@ import Dependencies._
 
 val basicSettings = Seq(
   shellPrompt           := { s => Project.extract(s).currentProject.id + " > " },
-  version               := "1.2.0",
+  version               := "1.3.0",
   scalaVersion          := "2.11.12",
   homepage              := Some(new URL("http://parboiled.org")),
   organization          := "org.parboiled",
@@ -36,7 +36,7 @@ val basicSettings = Seq(
   (scalacOptions in doc) ++= Seq("-doc-title", name.value, "-doc-version", version.value),
 
   // publishing
-  crossScalaVersions := Seq("2.10.7", "2.11.12", "2.12.8", "2.13.0-M5"),
+  crossScalaVersions := Seq("2.10.7", "2.11.12", "2.12.8", "2.13.0-RC1"),
   scalaBinaryVersion := {
     if (CrossVersion.isScalaApiCompatible(scalaVersion.value)) CrossVersion.binaryScalaVersion(scalaVersion.value)
     else scalaVersion.value
@@ -44,7 +44,6 @@ val basicSettings = Seq(
   publishMavenStyle := true,
   publishArtifact in Test := false,
   pomIncludeRepository := { _ => false },
-  useGpg := true,
   publishTo := {
     val nexus = "https://oss.sonatype.org/"
     if (version.value.trim.endsWith("SNAPSHOT")) Some("snapshots" at nexus + "content/repositories/snapshots")
